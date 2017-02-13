@@ -1,1 +1,8 @@
 = metio.wtf infrastructure
+
+Serves:
+
+- link:https://repository.metio.wtf/[repository.metio.wtf]
+- link:https://quality.metio.wtf/[quality.metio.wtf]
+- link:https://build.metio.wtf/[build.metio.wtf]
+- link:https://seb.hoß.de/[seb.hoß.de]
