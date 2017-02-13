@@ -1,0 +1,3 @@
+upstream sonarqube {
+        server localhost:{{ sonarqube_port }};
+}

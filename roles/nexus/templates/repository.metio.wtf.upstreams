@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+#
+# repository.metio.wtf
+#
+# Load balancing configuration
+# 
+
+upstream nexus {
+        server localhost:{{ nexus_port }};
+}

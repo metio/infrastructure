@@ -1,0 +1,32 @@
+- name: "Add required directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0777
+  with_items:
+    - "/var/opt/jenkins"
+    - "/var/opt/jenkins/data"
+    - "/var/www/build.metio.wtf"
+  tags:
+    - jenkins
+
+- name: "Add docker-compose file for Jenkins"
+  template:
+    src: "{{ item }}"
+    dest: "/var/opt/jenkins/{{ item }}"
+  with_items:
+    - "docker-compose.yml"
+  tags:
+    - jenkins
+    - docker
+
+- name: "Add virtual host configurations for build.metio.wtf"
+  template:
+    src: "{{ item }}"
+    dest: "/etc/nginx/sites-enabled/{{ item }}"
+  with_items:
+    - build.metio.wtf.upstreams
+    - build.metio.wtf
+  tags:
+    - jenkins
+    - nginx

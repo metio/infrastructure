@@ -1,0 +1,30 @@
+- name: "Add required directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "/var/opt/nexus"
+    - "/var/opt/nexus/data"
+    - "/var/www/repository.metio.wtf"
+  tags:
+    - nexus
+
+- name: "Add docker-compose file for Nexus"
+  template:
+    src: "{{ item }}"
+    dest: "/var/opt/nexus/{{ item }}"
+  with_items:
+    - "docker-compose.yml"
+  tags:
+    - nexus
+    - docker
+
+- name: "Add virtual host configurations for repository.metio.wtf"
+  template: src="{{item}}" dest="/etc/nginx/sites-enabled/{{item}}"
+  with_items:
+    - repository.metio.wtf.upstreams
+    - repository.metio.wtf
+  tags:
+    - nexus
+    - nginx

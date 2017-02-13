@@ -1,0 +1,38 @@
+- name: "Install packages"
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - letsencrypt
+    - nginx
+  tags:
+    - nginx
+
+- name: "Copy configuration"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/nginx/conf.d/{{ item }}"
+  with_items:
+    - default
+    - metio.conf
+  tags:
+    - nginx
+
+- name: "Remove preinstalled configuration"
+  file:
+    path: "/etc/nginx/{{ item }}"
+    state: absent
+  with_items:
+    - "sites-available/default"
+    - "sites-enabled/default"
+  tags:
+    - nginx
+
+- name: "Allow traffic to pass through firewall"
+  ufw:
+      rule: allow
+      direction: in
+      to_port: "{{ item }}"
+  with_items:        
+      - http
+      - https

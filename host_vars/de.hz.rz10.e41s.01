@@ -1,0 +1,4 @@
+nexus_port: 55100
+jenkins_port_http: 55000
+jenkins_port_cli: 50000
+sonarqube_port: 55200

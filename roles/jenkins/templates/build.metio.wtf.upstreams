@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+#
+# build.metio.wtf
+#
+# Load balancing configuration
+# 
+
+upstream jenkins {
+        server localhost:{{ jenkins_port_http }};
+}

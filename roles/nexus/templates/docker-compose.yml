@@ -1,0 +1,15 @@
+###################
+# {{ ansible_managed }} #
+###################
+
+version: '3'
+
+services:
+  nexus:
+    # https://hub.docker.com/r/clearent/nexus/
+    image: clearent/nexus:latest
+    container_name: metio-nexus
+    volumes:
+      - /var/opt/nexus/data:/nexus-data
+    ports:
+     - {{ nexus_port }}:8081

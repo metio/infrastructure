@@ -1,0 +1,10 @@
+#cloud-config
+
+hostname: de.hz.rz10.e41s.01
+
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1ITKW9bFItMTZtMCIWZTpIZLstYxBoq2ccwkAPElw9WQmJxItHWdbIrkQ87FSDpaxQhD6tqnkisx4OQ+0oDxnYIf16eNvEGS1ab+lQy/wZnRQHbtvJ/uHTqRctfqorKozt1m2yuTFISEtmGzjfcb02tKigOXls2O8kqHvYHzxo+d044vXxaHb7538iGqmBzUwYiLcaNC3xuM2pqBpTTjcz7Pn1C8mynmrUxt0CUwjagaWJtrWgM42M5RYWzJPNUJwxsdwlbjn8v7VsqyWyZ+7QzLKgbZ/8C5VUbGCCVGRJj3tJxUsptf75BETvZtd0dLubRADXhsA5Y/4lotyRNdZ timlinux@channel
+
+coreos:
+    etcd:
+        - https://discovery.etcd.io/bbafd1d82b0616f576a2a4479b57cc60

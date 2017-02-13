@@ -1,0 +1,10 @@
+#
+# repository.metio.wtf
+#
+# The artifact repository at metio.wtf
+#
+
+- hosts: metio
+  remote_user: root
+  roles:
+  - nexus

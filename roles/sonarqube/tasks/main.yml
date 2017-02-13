@@ -1,0 +1,32 @@
+- name: "Add required directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "/var/opt/sonarqube"
+    - "/var/opt/sonarqube/data"
+    - "/var/opt/sonarqube/extensions"
+    - "/var/opt/sonarqube/psql"
+    - "/var/www/quality.metio.wtf"
+  tags:
+    - sonarqube
+
+- name: "Add docker-compose file for SonarQube"
+  template:
+    src: "{{ item }}"
+    dest: "/var/opt/sonarqube/{{ item }}"
+  with_items:
+    - "docker-compose.yml"
+  tags:
+    - sonarqube
+    - docker
+
+- name: "Add virtual host configurations for quality.metio.wtf"
+  template: src="{{item}}" dest="/etc/nginx/sites-enabled/{{item}}"
+  with_items:
+    - quality.metio.wtf.upstreams
+    - quality.metio.wtf
+  tags:
+    - sonarqube
+    - nginx

@@ -1,0 +1,16 @@
+###################
+# {{ ansible_managed }} #
+###################
+
+version: '3'
+
+services:
+  jenkins:
+    # https://hub.docker.com/_/jenkins/
+    image: jenkins:alpine
+    container_name: metio-jenkins
+    volumes:
+     - /var/opt/jenkins/data:/var/jenkins_home
+    ports:
+     - {{ jenkins_port_http }}:8080
+     - {{ jenkins_port_cli }}:50000

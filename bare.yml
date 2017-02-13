@@ -1,0 +1,9 @@
+#
+# bare metal install
+#
+
+- hosts: metio
+  remote_user: root
+  roles:
+  - docker
+  - nginx

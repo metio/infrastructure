@@ -1,0 +1,10 @@
+#
+# quality.metio.wtf
+#
+# The code quality server at metio.wtf
+#
+
+- hosts: metio
+  remote_user: root
+  roles:
+  - sonarqube

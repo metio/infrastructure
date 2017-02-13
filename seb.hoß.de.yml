@@ -1,0 +1,10 @@
+#
+# seb.hoß.de
+#
+# The website of Sebastian Hoß
+#
+
+- hosts: metio
+  remote_user: root
+  roles:
+  - nginx

@@ -1,0 +1,6 @@
+#
+# Ansible HOSTS file
+#
+
+[metio]
+de.hz.rz10.e41s.01

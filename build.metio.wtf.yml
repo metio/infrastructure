@@ -1,0 +1,10 @@
+#
+# build.metio.wtf
+#
+# The build server at metio.wtf
+#
+
+- hosts: metio
+  remote_user: root
+  roles:
+  - jenkins

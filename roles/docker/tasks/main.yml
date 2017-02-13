@@ -1,0 +1,38 @@
+- name: "Add Docker APT keys"
+  apt_key:
+    id: '58118E89F3A912897C070ADBF76221572C52609D'
+    keyserver: 'hkp://p80.pool.sks-keyservers.net:80'
+  tags:
+    - docker
+
+- name: "Add Docker APT repository"
+  apt_repository:
+    repo: "deb https://apt.dockerproject.org/repo ubuntu-xenial main"
+  tags:
+    - docker
+
+- name: "Install Docker packages"
+  apt:
+    pkg: "{{item}}"
+  with_items:
+    - "docker-engine"
+  tags:
+    - docker
+
+- name: "Ensure docker-compose is installed and available"
+  get_url: 
+    url : https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 'u+x,g+x'
+  tags:
+    - docker
+
+- name: "Add application users to docker group"
+  user:
+    name: "{{item}}"
+    groups: docker
+    append: yes
+  with_items:
+    - "jenkins"
+    - "nexus"
+    - "sonarqube"
