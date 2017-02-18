@@ -1,4 +1,4 @@
-- name: "[mosh] Install packages"
+- name: "Install packages"
   apt:
     pkg: "{{ item }}"
     state: latest
